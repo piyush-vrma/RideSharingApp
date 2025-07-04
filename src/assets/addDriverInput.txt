@@ -1,0 +1,73 @@
+Add Drivers
+
+Car--------------
+
+6
+Tony
+Car
+KA-01
+4 3
+Champak
+Car
+KA-02
+4 8
+Rohit
+Car
+KA-03
+4 6
+Anjali
+Car
+KA-04
+6 8
+Varun
+Car
+KA-05
+6 6
+Sneha
+Car
+KA-06
+8 4
+
+Bike-------------
+
+5
+Amit
+Bike
+KA-07
+2 6
+Priya
+Bike
+KA-08
+3 4
+Manish
+Bike
+KA-09
+3 7
+Neha
+Bike
+KA-10
+7 7
+Karan
+Bike
+KA-11
+9 7
+
+PreimumSedan----------------------------
+
+4
+Divya
+PreimumSedan
+KA-12
+4 5
+Siddharth
+PreimumSedan
+KA-13
+6 5
+Ishita
+PreimumSedan
+KA-14
+8 5
+Rahul
+PreimumSedan
+KA-15
+5 7
