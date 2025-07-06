@@ -30,8 +30,6 @@ public interface Driver {
     void setRideDetails(RideDetails rideDetails);
 
     RideDetails getRideDetails();
-
-    double completeRide();
 }
 
 

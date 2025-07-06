@@ -58,9 +58,4 @@ public class DriverConcrete extends BaseUser implements Driver {
     public RideDetails getRideDetails() {
         return rideDetails;
     }
-
-    @Override
-    public double completeRide() {
-        return mediator.completeRide(this);
-    }
 }

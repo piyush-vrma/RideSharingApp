@@ -27,7 +27,7 @@ public class Main {
         Location destination = new Location("Koremangla", 1, 2);
         Driver driver = prince.bookRide(new RideDetails(prince, pickup, destination, VehicleType.PremiumSedan));
         if (driver != null) {
-            double fare = driver.completeRide();
+            double fare = rideBookingMediator.completeRide(driver);
             prince.payFarePrice(new UPI(), fare);
         }
     }
