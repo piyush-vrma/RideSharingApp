@@ -1,6 +1,5 @@
 package utils;
 
-import enums.VehicleType;
 import location.Location;
 import mediator.RideBookingMediator;
 import user.driver.Driver;
@@ -16,14 +15,13 @@ import java.util.function.BiFunction;
 public class Util {
 
     public static void addDrivers(RideBookingMediator rideBookingMediator, Scanner myScanner) {
-        addDriverByType("Car", VehicleType.Car, Car::new, rideBookingMediator, myScanner);
-        addDriverByType("Bike", VehicleType.Bike, Bike::new, rideBookingMediator, myScanner);
-        addDriverByType("PremiumSedan", VehicleType.PremiumSedan, PremiumSedan::new, rideBookingMediator, myScanner);
+        addDriverByType("Car", Car::new, rideBookingMediator, myScanner);
+        addDriverByType("Bike", Bike::new, rideBookingMediator, myScanner);
+        addDriverByType("PremiumSedan", PremiumSedan::new, rideBookingMediator, myScanner);
     }
 
     private static void addDriverByType(
             String vehicleTypeName,
-            VehicleType vehicleType,
             BiFunction<String, String, Vehicle> vehicleConstructor,
             RideBookingMediator rideBookingMediator,
             Scanner scanner
@@ -50,7 +48,6 @@ public class Util {
             Driver driver = new DriverConcrete(
                     driverName,
                     vehicleConstructor.apply(vehicleName, numberPlate),
-                    vehicleType,
                     new Location("Doddanekundi", x, y)
             );
 

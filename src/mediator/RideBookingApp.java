@@ -67,7 +67,7 @@ public class RideBookingApp implements RideBookingMediator, Observable {
     public double completeRide(Driver driver) {
         RideDetails rideDetails = driver.getRideDetails();
         int distanceTravelled = rideDetails.getPickUp().getDistance(rideDetails.getDestination());
-        FareCalculationStrategy fareCalculationStrategy = FareCalculationFactory.getFareCalculator(driver);
+        FareCalculationStrategy fareCalculationStrategy = FareCalculationFactory.getFareCalculator(driver.getVehicle());
         double fare = fareCalculationStrategy.calculateFare(distanceTravelled);
         System.out.println("Please pay fare price: " + fare + ", for distance of :" + distanceTravelled + " Km");
         driver.updateAvailability(true);

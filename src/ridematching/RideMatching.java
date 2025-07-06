@@ -11,7 +11,7 @@ public class RideMatching {
         Driver nearestAvailableDriver = null;
 
         for (Driver driver : drivers) {
-            if (rideDetails.getVehicleType() == driver.getVehicleType() && driver.isAvailable()) {
+            if (rideDetails.getVehicleType() == driver.getVehicle().getVehicleType() && driver.isAvailable()) {
                 int dist = rideDetails.getPickUp().getDistance(driver.getCurrentLocation());
                 if (dist < minDist) {
                     minDist = dist;

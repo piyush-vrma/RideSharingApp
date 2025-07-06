@@ -1,7 +1,6 @@
 package user.driver;
 
 import enums.RideStatus;
-import enums.VehicleType;
 import location.Location;
 import mediator.RideDetails;
 import user.BaseUser;
@@ -10,26 +9,19 @@ import vehicle.Vehicle;
 public class DriverConcrete extends BaseUser implements Driver {
     private boolean isAvailable;
     private Vehicle vehicle;
-    private VehicleType vehicleType;
     private Location currentLocation;
     private RideDetails rideDetails;
 
-    public DriverConcrete(String name, Vehicle vehicle, VehicleType vehicleType, Location location) {
+    public DriverConcrete(String name, Vehicle vehicle, Location location) {
         super(name);
         this.currentLocation = location;
         this.vehicle = vehicle;
-        this.vehicleType = vehicleType;
         this.isAvailable = true;
     }
 
     @Override
     public void rideStatusUpdate(RideStatus status) {
         System.out.println("Dear Captain\nRideStatus: " + status);
-    }
-
-    @Override
-    public VehicleType getVehicleType() {
-        return vehicleType;
     }
 
     @Override

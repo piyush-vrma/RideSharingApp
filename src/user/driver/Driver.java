@@ -1,6 +1,5 @@
 package user.driver;
 
-import enums.VehicleType;
 import location.Location;
 import mediator.RideDetails;
 import vehicle.Vehicle;
@@ -17,7 +16,6 @@ import vehicle.Vehicle;
  * 2. Complete the ride and ask for payment
  **/
 public interface Driver {
-    VehicleType getVehicleType();
 
     Vehicle getVehicle();
 
