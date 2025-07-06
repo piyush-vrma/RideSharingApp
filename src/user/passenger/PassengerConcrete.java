@@ -2,11 +2,12 @@ package user.passenger;
 
 import enums.RideStatus;
 import mediator.RideDetails;
+import notification.RideObserver;
 import paymentmode.PaymentStrategy;
 import user.BaseUser;
 import user.driver.Driver;
 
-public class PassengerConcrete extends BaseUser implements Passenger {
+public class PassengerConcrete extends BaseUser implements Passenger, RideObserver {
 
     public PassengerConcrete(String name) {
         super(name);

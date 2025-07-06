@@ -3,10 +3,11 @@ package user.driver;
 import enums.RideStatus;
 import location.Location;
 import mediator.RideDetails;
+import notification.RideObserver;
 import user.BaseUser;
 import vehicle.Vehicle;
 
-public class DriverConcrete extends BaseUser implements Driver {
+public class DriverConcrete extends BaseUser implements Driver, RideObserver {
     private boolean isAvailable;
     private Vehicle vehicle;
     private Location currentLocation;

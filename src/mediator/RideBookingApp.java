@@ -4,6 +4,7 @@ import enums.RideStatus;
 import farecalculation.FareCalculationFactory;
 import farecalculation.FareCalculationStrategy;
 import notification.Observable;
+import notification.RideObserver;
 import paymentmode.PaymentStrategy;
 import ridematching.RideMatching;
 import user.User;
@@ -83,7 +84,11 @@ public class RideBookingApp implements RideBookingMediator, Observable {
 
     @Override
     public void notify(Passenger passenger, Driver driver, RideStatus rideStatus) {
-        ((User) passenger).rideStatusUpdate(rideStatus);
-        ((User) driver).rideStatusUpdate(rideStatus);
+        if (passenger instanceof RideObserver observer) {
+            observer.rideStatusUpdate(rideStatus);
+        }
+        if (driver instanceof RideObserver observer) {
+            observer.rideStatusUpdate(rideStatus);
+        }
     }
 }
