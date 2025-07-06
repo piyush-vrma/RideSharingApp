@@ -4,6 +4,8 @@ import vehicle.Vehicle;
 
 public class SharedFare implements FareCalculationStrategy {
     private final Vehicle vehicle;
+    private final double baseFare = 10;
+    private final double multiplier = 0.5;
 
     SharedFare(Vehicle vehicle) {
         this.vehicle = vehicle;
@@ -11,7 +13,7 @@ public class SharedFare implements FareCalculationStrategy {
 
     @Override
     public double calculateFare(int distance) {
-        return vehicle.getPerKMFare() * distance * 1.5;
+        return baseFare + (vehicle.getPerKMFare() * distance * multiplier);
     }
 }
 
