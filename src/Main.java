@@ -25,12 +25,12 @@ public class Main {
         rideBookingMediator.addPassenger(passenger);
 
         // Create pickup & destination
-        Location pickup = new Location("Doddanekundi", 7, 10);
-        Location destination = new Location("Koremangla", 1, 2);
+        Location pickup = new Location("Doddanekundi", -1, 2);
+        Location destination = new Location("Koremangla", 7, 10);
 
         // Start app
         RideController controller = new RideController(rideBookingMediator);
-        RideDetails rideDetails = new RideDetails(passenger, pickup, destination, VehicleType.PremiumSedan);
+        RideDetails rideDetails = new RideDetails(passenger, pickup, destination, VehicleType.Car);
         controller.bookAndCompleteRide(passenger, rideDetails, new UPI());
     }
 }

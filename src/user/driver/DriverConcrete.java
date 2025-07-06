@@ -1,6 +1,5 @@
 package user.driver;
 
-import enums.RideStatus;
 import location.Location;
 import mediator.RideDetails;
 import notification.RideObserver;
@@ -21,8 +20,10 @@ public class DriverConcrete extends BaseUser implements Driver, RideObserver {
     }
 
     @Override
-    public void rideStatusUpdate(RideStatus status) {
-        System.out.println("Dear Captain\nRideStatus: " + status);
+    public void rideStatusUpdate(String rideStatus) {
+        System.out.println("[Notification]");
+        System.out.println("Dear Captain\nRideStatus: " + rideStatus);
+        System.out.println();
     }
 
     @Override

@@ -49,17 +49,19 @@ public class RideBookingApp implements RideBookingMediator, Observable {
     public Driver bookRide(RideDetails rideDetails) {
         Driver nearestAvailableDriver = RideMatching.findNearestDriver(rideDetails, drivers);
         if (nearestAvailableDriver == null) {
-            System.out.println("Sorry No driver available at the moment :(\nPlease try again after sometime.");
-            System.out.println();
+            notify((RideObserver) rideDetails.getPassenger(), "Sorry No driver available at the moment :(\nPlease try again after sometime.");
         } else {
             nearestAvailableDriver.updateAvailability(false);
             nearestAvailableDriver.setRideDetails(rideDetails);
-            notify(rideDetails.getPassenger(), nearestAvailableDriver, RideStatus.Started);
-            System.out.println("Rider found!!\nReaching at your pickUp spot");
-            System.out.println("Driver: " + ((User) nearestAvailableDriver).getName());
-            System.out.println("Vehicle: " + nearestAvailableDriver.getVehicle().getName());
-            System.out.println("NumberPlate: " + nearestAvailableDriver.getVehicle().getNumberPlate());
+
             System.out.println();
+            notify((RideObserver) rideDetails.getPassenger(), "Rider found!!\nReaching at your pickUp spot" +
+                    "\nDriver: " + ((User) nearestAvailableDriver).getName() +
+                    "\nVehicle: " + nearestAvailableDriver.getVehicle().getName() +
+                    "\nNumberPlate: " + nearestAvailableDriver.getVehicle().getNumberPlate());
+
+            notify((RideObserver) nearestAvailableDriver, RideStatus.Started.toString());
+            notify((RideObserver) rideDetails.getPassenger(), RideStatus.Started.toString());
         }
         return nearestAvailableDriver;
     }
@@ -70,11 +72,16 @@ public class RideBookingApp implements RideBookingMediator, Observable {
         int distanceTravelled = rideDetails.getPickUp().getDistance(rideDetails.getDestination());
         FareCalculationStrategy fareCalculationStrategy = FareCalculationFactory.getFareCalculator(driver.getVehicle());
         double fare = fareCalculationStrategy.calculateFare(distanceTravelled);
+
         System.out.println("Please pay fare price: " + fare + ", for distance of " + distanceTravelled + " Km");
         System.out.println();
+
         driver.updateAvailability(true);
         driver.setRideDetails(null);
-        notify(rideDetails.getPassenger(), driver, RideStatus.Completed);
+
+        notify((RideObserver) driver, RideStatus.Completed.toString());
+        notify((RideObserver) rideDetails.getPassenger(), RideStatus.Completed.toString());
+
         return fare;
     }
 
@@ -84,12 +91,7 @@ public class RideBookingApp implements RideBookingMediator, Observable {
     }
 
     @Override
-    public void notify(Passenger passenger, Driver driver, RideStatus rideStatus) {
-        if (passenger instanceof RideObserver observer) {
-            observer.rideStatusUpdate(rideStatus);
-        }
-        if (driver instanceof RideObserver observer) {
-            observer.rideStatusUpdate(rideStatus);
-        }
+    public void notify(RideObserver rideObserver, String rideStatus) {
+        rideObserver.rideStatusUpdate(rideStatus);
     }
 }

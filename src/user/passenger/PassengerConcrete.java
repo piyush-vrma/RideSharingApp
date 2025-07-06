@@ -1,6 +1,5 @@
 package user.passenger;
 
-import enums.RideStatus;
 import mediator.RideDetails;
 import notification.RideObserver;
 import paymentmode.PaymentStrategy;
@@ -14,8 +13,10 @@ public class PassengerConcrete extends BaseUser implements Passenger, RideObserv
     }
 
     @Override
-    public void rideStatusUpdate(RideStatus status) {
-        System.out.println("Dear Passenger\nRideStatus: " + status);
+    public void rideStatusUpdate(String rideStatus) {
+        System.out.println("[Notification]");
+        System.out.println("Dear Passenger\nRideStatus: " + rideStatus);
+        System.out.println();
     }
 
     @Override
